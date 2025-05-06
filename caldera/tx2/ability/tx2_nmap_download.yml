@@ -1,0 +1,14 @@
+- id: tx2_nmap_download
+  name: TX2 Download Nmap
+  description: Download nmap.exe
+  tactic: command-and-control
+  technique:
+    attack_id: T1105
+    name: Ingress Tool Transfer
+  platforms:
+    windows:
+      psh:
+        command: |
+          Copy-Item -Path ".\nmap.exe" -Destination "C:\Users\Public\nmap.exe" -Force
+        payloads:
+          - nmap.exe

@@ -1,0 +1,14 @@
+- id: tx2_mimikatz_download
+  name: TX2 Download UPX Packed Mimikatz
+  description: Download UPX-packed mimikatz.exe
+  tactic: command-and-control
+  technique:
+    attack_id: T1105
+    name: Ingress Tool Transfer
+  platforms:
+    windows:
+      psh:
+        command: |
+          Copy-Item -Path ".\mimikatz.exe" -Destination "C:\Users\Public\mimikatz.exe" -Force
+        payloads:
+          - mimikatz.exe

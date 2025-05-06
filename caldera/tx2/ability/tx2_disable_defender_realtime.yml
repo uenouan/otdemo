@@ -1,0 +1,12 @@
+- id: tx2_disable_defender_realtime
+  name: TX2 Disable Defender Realtime Protection
+  description: Disable Windows Defender real-time monitoring to allow further operations
+  tactic: defense-evasion
+  technique:
+    attack_id: T1562
+    name: Impair Defenses
+  platforms:
+    windows:
+      psh:
+        command: |
+          Set-MpPreference -DisableRealtimeMonitoring $true
