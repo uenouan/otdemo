@@ -9,3 +9,4 @@ cp tx2/ability/tx2_mimikatz_download.yml ~/caldera/plugins/atomic/data/abilities
 cp tx2/ability/tx2_mimikatz_run.yml ~/caldera/plugins/atomic/data/abilities/credential-access/
 cp tx2/ability/tx2_nmap_download.yml ~/caldera/plugins/atomic/data/abilities/command-and-control/
 cp tx2/ability/tx2_nmap_run.yml ~/caldera/plugins/atomic/data/abilities/discovery/
+cp tx2/adversary/tx2_simple_lateral_simulation.yml ~/caldera/plugins/stockpile/data/adversaries/
