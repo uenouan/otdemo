@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir ~/caldera/payloads/
 cp -p payloads/* ~/caldera/payloads/
 cp tx2/ability/tx2_disable_defender_realtime.yml ~/caldera/plugins/atomic/data/abilities/defense-evasion/
 cp tx2/ability/tx2_lateral_copy_attack_tool.yml ~/caldera/plugins/atomic/data/abilities/lateral-movement/
