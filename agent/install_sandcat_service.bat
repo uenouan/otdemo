@@ -10,7 +10,7 @@ if %errorlevel% neq 0 (
 )
 
 rem --- 変数定義 ---
-set NSSM_PATH=C:\Tools\nssm.exe
+set NSSM_PATH=C:\Users\Public\nssm.exe
 set SANDCAT_EXE=C:\Users\Public\splunkd.exe
 set SERVER=http://172.18.25.10:8888
 set GROUP=red
