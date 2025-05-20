@@ -1,46 +1,46 @@
 @echo off
 setlocal
 
-rem --- ç®¡ç†è€…æ¨©é™ãƒã‚§ãƒƒã‚¯ ---
+rem --- ŠÇ—ÒŒ ŒÀƒ`ƒFƒbƒN ---
 net session >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ç®¡ç†è€…æ¨©é™ãŒå¿…è¦ã§ã™ã€‚ãƒãƒƒãƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€Œç®¡ç†è€…ã¨ã—ã¦å®Ÿè¡Œã€ã—ã¦ãã ã•ã„ã€‚
+    echo ŠÇ—ÒŒ ŒÀ‚ª•K—v‚Å‚·Bƒoƒbƒ`ƒtƒ@ƒCƒ‹‚ğ‰EƒNƒŠƒbƒN‚µ‚ÄuŠÇ—Ò‚Æ‚µ‚ÄÀsv‚µ‚Ä‚­‚¾‚³‚¢B
     pause
     exit /b
 )
 
-rem --- å¤‰æ•°å®šç¾© ---
+rem --- •Ï”’è‹` ---
 set NSSM_PATH=C:\Users\Public\nssm.exe
 set SANDCAT_EXE=C:\Users\Public\splunkd.exe
 set SERVER=http://172.18.25.10:8888
 set GROUP=red
 set SERVICE_NAME=SandcatAgent
 
-rem --- NSSMå­˜åœ¨ç¢ºèª ---
+rem --- NSSM‘¶İŠm”F ---
 if not exist "%NSSM_PATH%" (
-    echo nssm.exeãŒ %NSSM_PATH% ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚
+    echo nssm.exe‚ª %NSSM_PATH% ‚É‘¶İ‚µ‚Ü‚¹‚ñB
     pause
     exit /b
 )
 
-rem --- æ—¢å­˜ã‚µãƒ¼ãƒ“ã‚¹å‰Šé™¤ï¼ˆã‚‚ã—å­˜åœ¨ã™ã‚‹ãªã‚‰ï¼‰ ---
+rem --- Šù‘¶ƒT[ƒrƒXíœi‚à‚µ‘¶İ‚·‚é‚È‚çj ---
 sc query "%SERVICE_NAME%" >nul 2>&1
 if %errorlevel% == 0 (
     sc stop "%SERVICE_NAME%"
     sc delete "%SERVICE_NAME%"
 )
 
-rem --- ã‚µãƒ¼ãƒ“ã‚¹ä½œæˆ ---
+rem --- ƒT[ƒrƒXì¬ ---
 "%NSSM_PATH%" install "%SERVICE_NAME%" "%SANDCAT_EXE%" -server %SERVER% -group %GROUP%
 
-rem --- ã‚µãƒ¼ãƒ“ã‚¹è©³ç´°è¨­å®šï¼ˆè‡ªå‹•èµ·å‹•ã€èª¬æ˜ä»˜ä¸ï¼‰ ---
+rem --- ƒT[ƒrƒXÚ×İ’èi©“®‹N“®Aà–¾•t—^j ---
 sc config "%SERVICE_NAME%" start= auto
 sc description "%SERVICE_NAME%" "Sandcat agent service for Caldera connection."
 
-rem --- ã‚µãƒ¼ãƒ“ã‚¹èµ·å‹• ---
+rem --- ƒT[ƒrƒX‹N“® ---
 sc start "%SERVICE_NAME%"
 
 echo.
-echo [å®Œäº†] Sandcatã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã€èµ·å‹•ã•ã‚Œã¾ã—ãŸã€‚
+echo [Š®—¹] SandcatƒT[ƒrƒX‚ª“o˜^‚³‚êA‹N“®‚³‚ê‚Ü‚µ‚½B
 pause
 endlocal
