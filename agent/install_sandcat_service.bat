@@ -31,7 +31,9 @@ if %errorlevel% == 0 (
 )
 
 rem --- サービス作成 ---
-"%NSSM_PATH%" install "%SERVICE_NAME%" "%SANDCAT_EXE%" -server %SERVER% -group %GROUP%
+echo 実行コマンド:
+echo "%NSSM_PATH%" install "%SERVICE_NAME%" "%SANDCAT_EXE%" "--server" "%SERVER%" "--group" "%GROUP%"
+"%NSSM_PATH%" install "%SERVICE_NAME%" "%SANDCAT_EXE%" "--server" "%SERVER%" "--group" "%GROUP%"
 
 rem --- サービス詳細設定（自動起動、説明付与） ---
 sc config "%SERVICE_NAME%" start= auto
