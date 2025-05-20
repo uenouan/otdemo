@@ -9,7 +9,7 @@
     windows:
       psh:
         command: |
-          Start-Process -FilePath "C:\Users\Public\nmap.exe" -ArgumentList "-Pn", "-p", "135,445", "172.18.24.0/24" -NoNewWindow -Wait;
+          Start-Process -FilePath "C:\Users\Public\nmap.exe" -ArgumentList '"-Pn" "-p" "135,445" "172.18.24.0/24"' -NoNewWindow -Wait;
           if (Test-Path "C:\Users\Public\nmap.exe") { "exists" } else { "not found" }
         payloads:
           - nmap.exe
