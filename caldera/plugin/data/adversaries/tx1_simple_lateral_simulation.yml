@@ -8,3 +8,4 @@ atomic_ordering:
   - tx0_nmap_run
   - tx1_lateral_copy_attack_tool
   - tx1_lateral_exec_attack_tool
+  - tx1_lateral_get_remote_shell
