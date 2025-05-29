@@ -1,0 +1,10 @@
+id: tx1_cpsdr_demo
+name: TX1_CPSDR_Demo
+description: |
+  Executes mimikatz and nmap, simulates credential access and lateral movement via hardcoded SMB and PsExec commands.
+atomic_ordering:
+  - tx0_disable_defender_realtime
+  - tx0_mimikatz_run
+  - tx0_nmap_run
+  - tx1_lateral_copy_attack_tool
+  - tx1_lateral_exec_attack_tool

