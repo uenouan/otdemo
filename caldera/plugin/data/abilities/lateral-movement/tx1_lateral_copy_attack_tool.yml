@@ -1,5 +1,5 @@
-- id: tx0_lateral_copy_attack_tool
-  name: TX0_Lateral_Copy_Attack_Tool
+- id: tx1_lateral_copy_attack_tool
+  name: TX1_Lateral_Copy_Attack_Tool
   description: Copy modbus_cli.exe to remote host and execute multiple register write commands remotely via PsExec.
   tactic: lateral-movement
   technique:

