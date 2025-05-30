@@ -15,9 +15,3 @@
         payloads:
           - sandcat-upx.exe
           - psexec.exe
-      requirements:
-        - module: fact
-          relationships:
-            - source: host.ip
-              edge: not equals
-              target: 172.18.24.12

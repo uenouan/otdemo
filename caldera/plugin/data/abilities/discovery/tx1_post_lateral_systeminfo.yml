@@ -10,9 +10,3 @@
       psh:
         command: |
           systeminfo
-      requirements:
-        - module: fact
-          relationships:
-            - source: host.ip
-              edge: equals
-              target: 172.18.24.12

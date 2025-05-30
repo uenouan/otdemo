@@ -13,9 +13,3 @@
           if (Test-Path "C:\Users\Public\nmap.exe") { "exists" } else { "not found" }
         payloads:
           - nmap.exe
-      requirements:
-        - module: fact
-          relationships:
-            - source: host.ip
-              edge: not equals
-              target: 172.18.24.12
