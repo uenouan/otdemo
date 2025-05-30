@@ -9,3 +9,4 @@ atomic_ordering:
   - tx1_lateral_copy_attack_tool
   - tx1_lateral_exec_attack_tool
   - tx1_lateral_deploy_sandcat
+  - tx1_post_lateral_systeminfo

@@ -1,0 +1,18 @@
+- id: tx1_post_lateral_systeminfo
+  name: TX1_Post_Lateral_SystemInfo
+  description: Collect system information only on remote host after lateral deployment.
+  tactic: discovery
+  technique:
+    attack_id: T1082
+    name: System Information Discovery
+  platforms:
+    windows:
+      psh:
+        command: |
+          systeminfo
+      requirements:
+        - module: fact
+          relationships:
+            - source: host.ip
+              edge: equals
+              target: 172.18.24.12

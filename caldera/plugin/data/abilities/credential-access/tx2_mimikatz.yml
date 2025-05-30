@@ -1,5 +1,5 @@
-- id: tx0_mimikatz_run
-  name: TX0 Run UPX Packed Mimikatz
+- id: tx2_mimikatz
+  name: TX2 Run UPX Packed Mimikatz
   description: Execute UPX-packed mimikatz.exe
   tactic: credential-access
   technique:

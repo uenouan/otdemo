@@ -13,3 +13,9 @@
           Copy-Item -Path "C:\Users\Public\modbus_writer.exe" -Destination "\\172.18.24.12\C$\Windows\Temp\" -Force
         payloads:
           - modbus_writer.exe
+      requirements:
+        - module: fact
+          relationships:
+            - source: host.ip
+              edge: not equals
+              target: 172.18.24.12

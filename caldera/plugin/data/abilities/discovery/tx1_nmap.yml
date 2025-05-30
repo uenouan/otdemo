@@ -1,0 +1,21 @@
+- id: tx1_nmap
+  name: TX1_Nmap
+  description: Simulate port scan using nmap.
+  tactic: discovery
+  technique:
+    attack_id: T1046
+    name: Network Service Discovery
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process -FilePath "C:\Users\Public\nmap.exe" -ArgumentList '"-Pn" "-p" "135,445" "172.18.24.0/24"' -NoNewWindow -Wait;
+          if (Test-Path "C:\Users\Public\nmap.exe") { "exists" } else { "not found" }
+        payloads:
+          - nmap.exe
+      requirements:
+        - module: fact
+          relationships:
+            - source: host.ip
+              edge: not equals
+              target: 172.18.24.12
