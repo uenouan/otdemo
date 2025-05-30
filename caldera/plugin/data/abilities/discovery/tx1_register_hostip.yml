@@ -9,14 +9,14 @@
     windows:
       psh:
         command: |
-            $routeLine = route print | Select-String "^\s*0\.0\.0\.0\s+0\.0\.0\.0" | Select-Object -First 1
+            $routeLine = route print | Select-String "^\s*0\.0\.0\.0\s+0\.0\.0\.0" | Select-Object -First 1;
             if ($routeLine) {
-              $columns = ($routeLine.ToString() -split '\s+') | Where-Object { $_ -ne '' }
-              $ip = $columns[3]
+              $columns = ($routeLine.ToString() -split '\s+') | Where-Object { $_ -ne '' };
+              $ip = $columns[3];
               if ($ip -notlike "169.254*") {
-                Write-Output $ip
-              }
-            }
+                Write-Output $ip;
+              };
+            };
         parsers:
           plugins.stockpile.app.parsers.ipaddr:
             - source: host.addr
