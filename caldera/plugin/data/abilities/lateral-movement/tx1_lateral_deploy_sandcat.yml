@@ -1,5 +1,5 @@
 - id: tx1_lateral_deploy_sandcat
-  name: TX1_Lateral_Deploy_Sandcat
+  name: TX1 Lateral Deploy Sandcat Agent
   description: Copy sandcat-packed.exe to remote host and execute remotely via PsExec.
   tactic: lateral-movement
   technique:
@@ -15,3 +15,8 @@
         payloads:
           - sandcat-upx.exe
           - psexec.exe
+  requirements:
+    - plugins.stockpile.app.requirements.basic:
+      - source: host.ip.address
+        edge: contains
+        target: 172.16.24.10

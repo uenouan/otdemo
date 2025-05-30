@@ -1,5 +1,5 @@
 - id: tx1_lateral_exec_modbus_cli
-  name: TX1_Lateral_Exec_modbus_cli
+  name: TX1 Lateral Execute modbus_cli
   description: Execute multiple register write commands remotely via PsExec using PowerShell.
   tactic: impact
   technique:
@@ -13,3 +13,8 @@
           Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', '-d', '-realtime', 'C:\Windows\Temp\modbus_cli.exe', '192.168.95.2', 'read_c', '1027', '1' -NoNewWindow;
         payloads:
           - psexec.exe
+  requirements:
+    - plugins.stockpile.app.requirements.basic:
+      - source: host.ip.address
+        edge: contains
+        target: 172.16.24.10

@@ -1,5 +1,5 @@
 - id: tx1_nmap
-  name: TX1_Nmap
+  name: TX1 Run Nmap
   description: Simulate port scan using nmap.
   tactic: discovery
   technique:
@@ -13,3 +13,8 @@
           if (Test-Path "C:\Users\Public\nmap.exe") { "exists" } else { "not found" }
         payloads:
           - nmap.exe
+  requirements:
+    - plugins.stockpile.app.requirements.basic:
+      - source: host.ip.address
+        edge: contains
+        target: 172.16.24.10

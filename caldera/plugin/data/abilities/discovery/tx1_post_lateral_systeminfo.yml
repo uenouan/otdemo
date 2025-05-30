@@ -1,5 +1,5 @@
 - id: tx1_post_lateral_systeminfo
-  name: TX1_Post_Lateral_SystemInfo
+  name: TX1 Post Lateral SystemInfo
   description: Collect system information only on remote host after lateral deployment.
   tactic: discovery
   technique:
@@ -10,3 +10,8 @@
       psh:
         command: |
           systeminfo
+  requirements:
+    - plugins.stockpile.app.requirements.basic:
+      - source: host.ip.address
+        edge: not contains
+        target: 172.16.24.10

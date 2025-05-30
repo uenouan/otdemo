@@ -1,0 +1,14 @@
+- id: tx1_register_hostip
+  name: TX1 Register Host IP as a fact
+  description: Explicitly registers host.ip as a fact for testing requirements.
+  tactic: discovery
+  technique:
+    attack_id: T1082
+    name: System Information Discovery
+  platforms:
+    windows:
+      psh:
+        command: echo 172.16.24.10
+        facts:
+          - trait: host.ip
+            value: 172.16.24.10

@@ -1,5 +1,5 @@
 - id: tx2_nmap
-  name: TX2_Nmap
+  name: TX2 Run Nmap
   description: Simulate port scan using nmap.
   tactic: discovery
   technique:
