@@ -14,4 +14,4 @@
     - plugins.stockpile.app.requirements.basic:
       - source: host.addr
         edge: not equals
-        target: itpc.addr
+        target: 172.16.24.10
