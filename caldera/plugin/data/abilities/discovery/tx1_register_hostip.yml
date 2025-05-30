@@ -8,7 +8,15 @@
   platforms:
     windows:
       psh:
-        command: echo 172.16.24.10
-        facts:
-          - trait: host.ip
-            value: 172.16.24.10
+        command: |
+            $routeLine = route print | Select-String "^\s*0\.0\.0\.0\s+0\.0\.0\.0" | Select-Object -First 1
+            if ($routeLine) {
+              $columns = ($routeLine.ToString() -split '\s+') | Where-Object { $_ -ne '' }
+              $ip = $columns[3]
+              if ($ip -notlike "169.254*") {
+                Write-Output $ip
+              }
+            }
+        parsers:
+          plugins.stockpile.app.parsers.ipaddr:
+            - source: host.addr

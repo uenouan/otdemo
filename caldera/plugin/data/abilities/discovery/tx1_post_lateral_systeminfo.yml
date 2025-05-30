@@ -12,6 +12,6 @@
           systeminfo
   requirements:
     - plugins.stockpile.app.requirements.basic:
-      - source: host.ip.address
-        edge: not contains
-        target: 172.16.24.10
+      - source: host.addr
+        edge: not equals
+        target: itpc.addr
