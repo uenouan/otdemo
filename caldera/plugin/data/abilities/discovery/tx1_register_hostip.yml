@@ -20,3 +20,6 @@
         parsers:
           plugins.stockpile.app.parsers.ipaddr:
             - source: host.addr
+  requirements:
+    - plugins.stockpile.app.requirements.not_exists:
+      - source: host.name

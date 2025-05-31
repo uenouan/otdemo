@@ -14,7 +14,5 @@
         payloads:
           - nmap.exe
   requirements:
-    - plugins.stockpile.app.requirements.basic:
+    - plugins.stockpile.app.requirements.paw_provenance:
       - source: host.addr
-        edge: equals
-        target: 172.16.24.10

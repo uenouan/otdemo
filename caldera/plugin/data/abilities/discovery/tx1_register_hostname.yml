@@ -1,0 +1,17 @@
+- id: tx1_register_hostname
+  name: TX1 Register Host Name as a fact
+  description: Explicitly registers host.name as a fact for testing requirements.
+  tactic: discovery
+  technique:
+    attack_id: T1082
+    name: System Information Discovery
+  platforms:
+    windows:
+      psh:
+        command: echo $env:USERDOMAIN\$env:USERNAME
+        parsers:
+          plugins.stockpile.app.parsers.line:
+            - source: host.name
+  requirements:
+    - plugins.stockpile.app.requirements.not_exists:
+      - source: host.addr

@@ -15,8 +15,9 @@
         payloads:
           - sandcat-upx.exe
           - psexec.exe
+        timeout: 120
   requirements:
     - plugins.stockpile.app.requirements.basic:
       - source: host.addr
         edge: equals
-        target: 172.16.24.10
+        target: 172.16.24.12

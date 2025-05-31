@@ -11,7 +11,5 @@
         command: |
           systeminfo
   requirements:
-    - plugins.stockpile.app.requirements.basic:
-      - source: host.addr
-        edge: not equals
-        target: 172.16.24.10
+    - plugins.stockpile.app.requirements.paw_provenance:
+      - source: host.name
