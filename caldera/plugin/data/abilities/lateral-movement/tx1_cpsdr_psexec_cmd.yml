@@ -1,0 +1,14 @@
+- id: tx1_cpsdr_psexec_cmd
+  name: TX1 CPSDR PsExec Cmd.exe
+  description: Execute cmd.exe via PsExec using PowerShell.
+  tactic: lateral-movement
+  technique:
+    attack_id: T1021
+    name: Remote Services
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'cmd.exe' -NoNewWindow
+        payloads:
+          - psexec.exe
