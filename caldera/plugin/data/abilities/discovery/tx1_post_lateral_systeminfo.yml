@@ -11,5 +11,7 @@
         command: |
           systeminfo
   requirements:
-    - plugins.stockpile.app.requirements.paw_provenance:
+    - plugins.stockpile.app.requirements.basic:
       - source: host.name
+        edge: contains
+        target: ot-ews

@@ -8,10 +8,7 @@
   platforms:
     windows:
       psh:
-        command: echo $env:USERDOMAIN\$env:USERNAME
+        command: echo $env:COMPUTERNAME
         parsers:
           plugins.stockpile.app.parsers.line:
             - source: host.name
-  requirements:
-    - plugins.stockpile.app.requirements.not_exists:
-      - source: host.addr

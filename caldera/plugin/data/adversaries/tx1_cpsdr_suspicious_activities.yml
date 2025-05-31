@@ -1,0 +1,10 @@
+id: tx1_cpsdr_suspicious_activities
+name: TX1 CPSDR Suspicious Activities
+description: |
+  Trigger CPSDR detection on StellarProtect and EdgeIPS.
+phases:
+  1:
+    - tx1_register_hostname
+    - tx1_post_lateral_systeminfo
+  2:
+    - tx1_cpsdr_exec_modbus_cli

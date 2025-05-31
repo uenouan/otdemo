@@ -1,0 +1,11 @@
+id: tx0_cpsdr_lateral_movement
+name: TX0 CPSDR Lateral Movement
+description: |
+  Executes mimikatz and nmap, simulates credential access and lateral movement.
+phases:
+  1:
+    - tx0_register_hostip
+    - tx0_mimikatz
+    - tx0_nmap
+  2:
+    - tx0_lateral_deploy_sandcat

@@ -1,0 +1,20 @@
+- id: tx1_cpsdr_exec_modbus_cli
+  name: TX1 CPSDR Execute modbus_cli
+  description: Execute multiple read commands to invalid register addresses.
+  tactic: impact
+  technique:
+    attack_id: T0831
+    name: Manipulation of Control
+  platforms:
+    windows:
+      psh:
+        command: |
+          Start-Process -FilePath "C:\Users\Public\modbus_cli.exe" -ArgumentList '192.168.95.2', 'read_c', '1026', '1' -NoNewWindow;
+          Start-Process -FilePath "C:\Users\Public\modbus_cli.exe" -ArgumentList '192.168.95.2', 'read_c', '1027', '1' -NoNewWindow;
+        payloads:
+          - modbus_cli.exe
+  requirements:
+    - plugins.stockpile.app.requirements.basic:
+      - source: host.name
+        edge: contains
+        target: ot-ews

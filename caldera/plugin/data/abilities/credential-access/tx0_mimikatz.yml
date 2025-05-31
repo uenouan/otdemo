@@ -1,5 +1,5 @@
-- id: tx1_mimikatz
-  name: TX1 Run UPX Packed Mimikatz
+- id: tx0_mimikatz
+  name: TX0 Run UPX Packed Mimikatz
   description: Execute UPX-packed mimikatz.exe
   tactic: credential-access
   technique:
@@ -17,4 +17,4 @@
     - plugins.stockpile.app.requirements.basic:
       - source: host.addr
         edge: equals
-        target: 172.16.24.10
+        target: 172.18.24.10

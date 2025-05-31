@@ -1,5 +1,5 @@
-- id: tx1_nmap
-  name: TX1 Run Nmap
+- id: tx0_nmap
+  name: TX0 Run Nmap
   description: Simulate port scan using nmap.
   tactic: discovery
   technique:
@@ -14,5 +14,7 @@
         payloads:
           - nmap.exe
   requirements:
-    - plugins.stockpile.app.requirements.paw_provenance:
+    - plugins.stockpile.app.requirements.basic:
       - source: host.addr
+        edge: equals
+        target: 172.18.24.10
