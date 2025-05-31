@@ -8,4 +8,4 @@ phases:
     - tx1_post_lateral_systeminfo
   2:
     - tx1_cpsdr_exec_modbus_cli
-    - tx1_cpsdr_psexec_cmd
+    - tx1_cpsdr_tool_transfer
